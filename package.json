@@ -1,0 +1,45 @@
+{
+  "name": "specjs",
+  "version": "1.0.0",
+  "description": "`specjs` seeks to implement a specification system for Javascript.",
+  "main": "index.js",
+  "scripts": {
+    "docs": "jsdoc -c .jsdoc.json",
+    "test": "mocha -c -r ts-node/register,babel-core/register --reporter dot 'tests/**/*.test.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walnutdust/specjs.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Garett Tok Ern Liang",
+    "url": "https://github.com/walnutdust"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/walnutdust/specjs/issues"
+  },
+  "homepage": "https://github.com/walnutdust/specjs#readme",
+  "devDependencies": {
+    "@babel/core": "7.0.0",
+    "@types/node": "^12.12.5",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "braintree-jsdoc-template": "^3.3.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.14.1",
+    "eslint-plugin-mocha": "^6.2.1",
+    "jsdoc": "^3.6.3",
+    "mocha": "^6.2.2",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "babel-plugin-dev-expression": "^0.2.2",
+    "immutable": "^4.0.0-rc.12",
+    "tiny-invariant": "^1.0.6"
+  }
+}
