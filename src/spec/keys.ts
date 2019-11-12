@@ -20,7 +20,7 @@ class Keys extends Spec {
    * @return {invalid|any} Returns the value if value passes spec, returns
    * specjs.invalid otherwise.
    */
-  assert(value) {
+  assert(value: any) {
     if (value.specs && value.specs[this.name] !== undefined) return value.specs[this.name];
     if (!(typeof value === 'object')) return invalid;
 
@@ -41,11 +41,11 @@ class Keys extends Spec {
    * Explains why a value passes/fails this spec.
    *
    * @param {any} value - The value to be checked.
-   * @param {String[]} path - The path travelled to this spec.
+   * @param {string[]} path - The path travelled to this spec.
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value, path) {
+  explain(value: any, path: string[]) {
     if (!(value instanceof Map) && !(typeof value === 'object')) return false;
 
     let result = true;
@@ -63,13 +63,13 @@ class Keys extends Spec {
 /**
  * Factory function for `Keys` specs.
  *
- * @param {String} name - Name of the key spec. Important to set this to a human
+ * @param {string} name - Name of the key spec. Important to set this to a human
  * readable (meaningful) string, since this is what will get printed out in explain.
- * @param {([key : any]: Spec)} specs - Specs that have all to be satisfied to fulfill this spec.
+ * @param {([key : string]: Spec)} specs - Specs that have all to be satisfied to fulfill this spec.
  * @return {Keys} Returns a `Keys` spec requiring the values of the input to satisfy
  * the keys initialized in this spec.
  */
-export const keys = (name, specs) => {
+export const keys = (name: string, specs: {[key: string]: Spec}) => {
   invariant(typeof name === 'string', 'specjs.keys was called with an invalid name.');
   invariant(
     typeof specs === 'object' && Object.keys(specs).length !== 0,

@@ -21,7 +21,7 @@ export default class Pred extends Spec {
    * @throws Throws an error if predicate function does not return boolean when
    * fed with input value.
    */
-  assert(value) {
+  assert(value: any) {
     const result = this.options(value);
 
     if (result === true) return value;
@@ -36,11 +36,11 @@ export default class Pred extends Spec {
    * if value fails at this pred.
    *
    * @param {any} value - The value to be checked.
-   * @param {String[]} path - The path travelled to this spec.
+   * @param {string[]} path - The path travelled to this spec.
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value, path) {
+  explain(value: any, path: string[]) {
     const result = this.options(value);
 
     if (result === true) return true;
@@ -63,18 +63,18 @@ export default class Pred extends Spec {
  * on the user to verify that the input fn is a function. However, during runtime, should a
  * non-boolean output be detected, assert throws an error, which may help in debugging.
  *
- * @param {String} name - Name of the key spec. Important to set this to a human
+ * @param {string} name - Name of the key spec. Important to set this to a human
  * readable (meaningful) string, since this is what will get printed out in explain.
  * @param {function} fn - Predicate function that returns a boolean value on input
  * within user-desired domain.
- * @return {PRed} Returns a `Pred` spec requiring the value to return true when fed
+ * @return {Pred} Returns a `Pred` spec requiring the value to return true when fed
  * to `fn`.
  * @throws Throws an error if name is not a valid string or fn is not a valid function.
  */
-export const pred = (name, fn) => {
+export const pred = (name: string, fn: (value: any) => boolean) => {
   invariant(fn && typeof fn === 'function', 'specjs.pred was called with an invalid predicate.');
 
   invariant(name && typeof name === 'string', 'specjs.pred was called with an invalid string.');
 
-  return new Spec(name, fn);
+  return new Pred(name, fn);
 };

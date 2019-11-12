@@ -18,7 +18,7 @@ class Or extends Spec {
    * @return {invalid|any} Returns the value if value passes spec, returns
    * specjs.invalid otherwise.
    */
-  assert(value) {
+  assert(value: any) {
     for (let spec of this.options) {
       if (spec.assert(value) !== invalid) {
         return value;
@@ -32,11 +32,11 @@ class Or extends Spec {
    * Explains why a value passes/fails this spec.
    *
    * @param {any} value - The value to be checked.
-   * @param {String[]} path - The path travelled to this spec.
+   * @param {string[]} path - The path travelled to this spec.
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value, path) {
+  explain(value: any, path: string[]) {
     let result = false;
     for (let spec of this.options) {
       if (spec.assert(value) !== invalid) {
@@ -57,13 +57,13 @@ class Or extends Spec {
 /**
  * Factory function for `Or` specs.
  *
- * @param {String} name - Name of the and spec. Important to set this to a human
+ * @param {string} name - Name of the and spec. Important to set this to a human
  * readable (meaningful) string, since this is what will get printed out in explain.
  * @param {...Spec} specs - Specs, where one of them has to be satisfied to fulfill
  * this spec.
  * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
  */
-export const or = (name, ...specs) => {
+export const or = (name: string, ...specs: Spec[]) => {
   invariant(typeof name === 'string', 'specjs.or was called with an invalid name.');
   invariant(specs.length > 0, 'specjs.or was called without specs.');
   for (let spec of specs) {

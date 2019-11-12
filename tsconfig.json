@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2015",
     "moduleResolution": "node",
     "module": "commonjs",
-    "declaration": false,
+    "declaration": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -20,7 +20,7 @@
     "lib": ["es2017", "dom"],
     "noEmitHelpers": true
   },
-  "include": ["src/**/*", "src/example.js"],
+  "include": ["src", "example.ts"],
   "exclude": ["node_modules"],
   "compileOnSave": false
 }

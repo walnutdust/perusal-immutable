@@ -8,8 +8,11 @@ import invariant from 'tiny-invariant';
  * specification assertion on a given value.
  * @private
  */
-export default class Spec {
-  constructor(name, options) {
+export default abstract class Spec {
+  name: string;
+  options: any;
+
+  constructor(name: string, options: any) {
     this.name = name;
     this.options = options;
   }
@@ -20,11 +23,13 @@ export default class Spec {
    * @param {any} value - The value to be asserted.
    * @throws Error on call - subclasses should all implement the `assert` method.
    */
-  assert(value) {
+  assert(value: any) {
     invariant(
       false,
       `Invalid call to Spec assert with value ${value}. Was assert implemented in the subclass?`
     );
+
+    return value;
   }
 
   /**
@@ -34,7 +39,7 @@ export default class Spec {
    * @param {String[]} path - The path travelled to this spec.
    * @throws Error on call - subclasses should all implement the `explain` method.
    */
-  explain(value, path) {
+  explain(value: any, path: String[]) {
     invariant(
       false,
       `Invalid call to Spec explain with value ${value} at ${path}. Was explain implemented in the subclass?`

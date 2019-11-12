@@ -11,7 +11,7 @@ import {isImmutable} from 'immutable';
  * (typically the spec's name).
  * @param {true|invalid} value - Value representing if the object satisfied the keys.
  */
-export function addToSpecs(object, key, value) {
+export function addToSpecs(object: any, key: string, value: true | Symbol) {
   if (isImmutable(object) || object.isExtendable) {
     if (!object.specs) {
       object.specs = {};

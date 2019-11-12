@@ -11,19 +11,19 @@ import invariant from 'tiny-invariant';
 export {and, keys, pred, optional, Spec, or};
 
 /* eslint-disable no-console */
-/** @member {Map} defs holds all user-made definitions. */
-const defs = {};
+/** @member {[key: string]: Spec} defs holds all user-made definitions. */
+const defs: {[key: string]: Spec} = {};
 
 /**
  * Asserts a spec on a given value. Returns the value if value passes specification,
  * returns `specjs.invalid` otherwise.
  *
  * @param {any} value - The value to be asserted.
- * @param {Spec} spec - The spec to be used.
+ * @param {Spec | string} spec - The spec to be used.
  * @return {invalid|any} Returns the value if value passes specification, returns
  * specjs.invalid otherwise.
  */
-export function assert(value, spec) {
+export function assert(value: any, spec: Spec | string) {
   // getSpec allows us to pass it strings to retrive previously defined specs.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
@@ -43,11 +43,11 @@ export function assert(value, spec) {
  * Checks if a value is valid given a specificiation.
  *
  * @param {any} value - The value to be checked.
- * @param {Spec} spec - The speficiation to be used.
+ * @param {Spec | string} spec - The speficiation to be used.
  * @return {boolean} Returns boolean representing if the value if value passes
  * spec.
  */
-export function isValid(value, spec) {
+export function isValid(value: any, spec: Spec | string) {
   // Error checking/throwing here to provide more helpful error messages.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
@@ -61,9 +61,9 @@ export function isValid(value, spec) {
  * Explains why a value passes/fails a specification.
  *
  * @param {any} value - The value to be checked.
- * @param {Spec} spec - The speficiation to be used.
+ * @param {Spec | string} spec - The speficiation to be used.
  */
-export function explain(value, spec) {
+export function explain(value: any, spec: Spec | string) {
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
     `Invalid specification ${spec} passed to specjs.explain.`
@@ -71,7 +71,7 @@ export function explain(value, spec) {
 
   const specification = getSpec(spec);
 
-  if (specification.assert(value, spec) !== invalid) {
+  if (specification.assert(value) !== invalid) {
     console.log('\n\nValue:\n');
     console.log(isImmutable(value) ? value.toJS() : value);
     console.log(`\n\nPasses specification ${specification.name}.`);
@@ -89,9 +89,9 @@ export function explain(value, spec) {
  * Explains why a value fails a specification. Like {@link explain}, but only produces output if invalid.
  *
  * @param {any} value - The value to be checked.
- * @param {Spec} spec - The specificiation to be used.
+ * @param {Spec | string} spec - The specificiation to be used.
  */
-export function explainIfInvalid(value, spec) {
+export function explainIfInvalid(value: any, spec: Spec | string) {
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
     `Invalid specification ${spec} passed to specjs.explainIfInvalid.`
@@ -111,10 +111,10 @@ export function explainIfInvalid(value, spec) {
 /**
  * Defines a new spec, allowing it to be referenced as such in the future.
  *
- * @param {String} name - The name that will be used to refer to the spec in the future.
+ * @param {string} name - The name that will be used to refer to the spec in the future.
  * @param {Spec} spec - The spec to be defined.
  */
-export function define(name, spec) {
+export function define(name: string, spec: Spec) {
   invariant(!defs[name], `Specfication for ${name} already exists!`);
   invariant(spec instanceof Spec, 'specjs.define called with invalid spec.');
   defs[name] = spec;
@@ -123,10 +123,10 @@ export function define(name, spec) {
 /**
  * Defines a new spec, allowing it to be referenced as such in the future.
  *
- * @param {String|Spec} maybeSpec - The name of the spec as previously defined in
+ * @param {string|Spec} maybeSpec - The name of the spec as previously defined in
  * {@link define} or the spec itself.
  */
-export function getSpec(maybeSpec) {
+export function getSpec(maybeSpec: string | Spec) {
   if (maybeSpec instanceof Spec) return maybeSpec;
 
   invariant(defs[maybeSpec], `Specification for ${maybeSpec} does not exist!`);

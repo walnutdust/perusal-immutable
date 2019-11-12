@@ -19,7 +19,7 @@ export default class Optional extends Spec {
    * @return {invalid|any} Returns the value if value passes spec, returns
    * specjs.invalid otherwise.
    */
-  assert(value) {
+  assert(value: any) {
     if (value === undefined) return value;
 
     const result = this.options.assert(value);
@@ -32,11 +32,11 @@ export default class Optional extends Spec {
    * Explains why a value passes/fails this spec.
    *
    * @param {any} value - The value to be checked.
-   * @param {String[]} path - The path travelled to this spec.
+   * @param {string[]} path - The path travelled to this spec.
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value, path) {
+  explain(value: any, path: string[]) {
     if (value === undefined) return true;
 
     return this.options.explain(value, path);
@@ -50,7 +50,7 @@ export default class Optional extends Spec {
  * @return {Optional} Returns a `Optional` spec requiring the input value to satisfy
  * the provided spec if it is defined.
  */
-export const optional = (spec) => {
+export const optional = (spec: Spec) => {
   invariant(spec instanceof Spec, 'Invalid specification passed to specjs.optional');
   return new Optional('optional', spec);
 };

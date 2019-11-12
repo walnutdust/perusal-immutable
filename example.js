@@ -8,9 +8,9 @@ import {
   getSpec,
   isValid,
   explain
-} from './utils';
-import {even, positive, isNumber, isString} from './preds';
-import Pred from './spec/pred';
+} from './lib/utils';
+import {even, positive, isNumber, isString} from './lib/preds';
+import Pred from './lib/spec/pred';
 import {fromJS, Map} from 'immutable';
 import {performance} from 'perf_hooks';
 
