@@ -59,14 +59,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn docs"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.{ts}": [
       "./node_modules/.bin/eslint --ext .ts --ignore-path .gitignore --fix",
       "pretty-quick --staged",
+      "yarn docs",
       "git add"
     ]
   }
