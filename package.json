@@ -43,12 +43,27 @@
     "eslint": "^5.14.1",
     "eslint-plugin-mocha": "^6.2.1",
     "jsdoc": "^3.6.3",
+    "lint-staged": "^9.4.2",
     "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "ts-node": "^8.4.1",
     "typescript": "^3.7.2"
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "tiny-invariant": "^1.0.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "./node_modules/.bin/eslint --ext .jsx,js --ignore-path .gitignore --fix",
+      "pretty-quick --staged",
+      "git add"
+    ]
   }
 }
