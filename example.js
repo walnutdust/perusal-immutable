@@ -7,7 +7,7 @@ import {
   or,
   getSpec,
   isValid,
-  explain
+  explain,
 } from './lib/utils';
 import {even, positive, isNumber, isString} from './lib/preds';
 import Pred from './lib/spec/pred';
@@ -17,44 +17,52 @@ import {performance} from 'perf_hooks';
 /* eslint-disable no-console */
 
 // Invalid validity checking returns false.
-console.log(isValid(1, even)); // false
+isValid(1, even); // false
 
 // Valid values returns true.
-console.log(isValid(2, even)); // true
+isValid(2, even); // true
 
 // We can define our own specifications.
 define('is-a?', new Pred("is 'a'?", (value) => value === 'a'));
-console.log(isValid('b', 'is-a?')); // false
-console.log(isValid('a', 'is-a?')); // true
+isValid('b', 'is-a?'); // false
+isValid('a', 'is-a?'); // true
 
 // We can join multiple predicates.
 // Note that the definition key does not have to be the same as the explanatory string.
 define('pos-even', and('positive, even number', positive, even));
-console.log(isValid(2, 'pos-even')); // true
-console.log(isValid(-2, 'pos-even')); // false
+isValid(2, 'pos-even'); // true
+isValid(-2, 'pos-even'); // false
 
 // We can also check maps.
 const point = {
   x: 1,
-  y: 2
+  y: 2,
 };
 
 const threeDpoint = new Map({
   x: 1,
   y: 2,
-  z: 3
+  z: 3,
 });
 define('point', keys('2d or 3d point', {x: isNumber, y: isNumber, z: optional(isNumber)}));
 define('point or string', or('point or string', getSpec('point'), isString));
-console.log(isValid(point, 'point')); // true
-explain(point, 'point'); // [object Object]: passes specificiation 2d or 3d point.
-console.log(isValid(threeDpoint, 'point')); // true
-console.log(isValid(threeDpoint, 'point or string')); // true
+isValid(point, 'point'); // true
+explain(point, 'point');
+/*
+  Value:
 
-// We can assert the value, which throws an error if it fails.
+  { x: 1, y: 2 }
+
+  Passes specification 2d or 3d point.
+*/
+
+isValid(threeDpoint, 'point'); // true
+isValid(threeDpoint, 'point or string'); // true
+
+// We can assert the value, which returns invalid if it fails.
 const invalidPoint = new Map({
   x: 'a',
-  y: 2
+  y: 2,
 });
 isValid(invalidPoint, 'point or string'); // false
 // Why did it fail?
@@ -72,12 +80,12 @@ explainIfInvalid(point, 'point or string'); // no output.
 const nestedPoint = new Map({
   x: new Map({
     x: new Map({
-      x: 'hi'
-    })
-  })
+      x: 'hi',
+    }),
+  }),
 });
 define('2-nested point', keys('nested nested point', {
-  x: keys('nested point', {x: getSpec('point')})
+  x: keys('nested point', {x: getSpec('point')}),
 }));
 explain(nestedPoint, '2-nested point');
 // key x->key x->key x->is a number?: hi failed specification.
@@ -88,9 +96,9 @@ const nestedPoint2 = fromJS({
   x: {
     x: {
       x: 2,
-      y: 'hi'
-    }
-  }
+      y: 'hi',
+    },
+  },
 });
 
 isValid(nestedPoint2, '2-nested point');
@@ -101,9 +109,9 @@ const nestedPoint3 = {
   x: {
     x: {
       x: 2,
-      y: 3
-    }
-  }
+      y: 3,
+    },
+  },
 };
 
 isValid(nestedPoint3, '2-nested point');

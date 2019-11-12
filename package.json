@@ -4,7 +4,7 @@
   "description": "`specjs` seeks to implement a specification system for Javascript.",
   "main": "index.js",
   "scripts": {
-    "docs": "jsdoc -c .jsdoc.json",
+    "docs": "jsdoc -c jsdoc.json",
     "test": "mocha -c -r ts-node/register,@babel/register --reporter dot 'tests/**/*.test.js'",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
@@ -58,7 +58,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn docs"
     }
   },
   "lint-staged": {
