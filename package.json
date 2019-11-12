@@ -42,6 +42,7 @@
     "chai": "^4.2.0",
     "eslint": "^5.14.1",
     "eslint-plugin-mocha": "^6.2.1",
+    "husky": "^3.0.9",
     "jsdoc": "^3.6.3",
     "lint-staged": "^9.4.2",
     "mocha": "^6.2.2",
@@ -61,7 +62,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "./node_modules/.bin/eslint --ext .jsx,js --ignore-path .gitignore --fix",
+      "./node_modules/.bin/eslint --ext .jsx,js,.ts --ignore-path .gitignore --fix",
       "pretty-quick --staged",
       "git add"
     ]
