@@ -129,7 +129,7 @@ for (let i = 0; i < n; i++) {
   test = 'test';
 }
 const t1 = performance.now();
-console.log(`Declaring a string took ${(t1 - t0) / n} milliseconds on average.`);
+console.log('Declaring a string took ' + (t1 - t0) / n + ' milliseconds on average.');
 // Declaring a string took 8.706519499421119e-7 milliseconds on average.
 
 const t2 = performance.now();
@@ -137,8 +137,8 @@ for (let i = 0; i < n; i++) {
   typeof 'test' === 'string';
 }
 const t3 = performance.now();
-console.log(`Checking string type took ${(t3 - t2) / n} milliseconds on average.`);
-console.log(`Checking a string took ${((t3 - t2) / (t1 - t0)).toPrecision(3)}% more time.`);
+console.log('Checking string type took ' + (t3 - t2) / n + ' milliseconds on average.');
+console.log('Checking a string took ' + ((t3 - t2) / (t1 - t0)).toPrecision(3) + '% more time.');
 const n = 10000000;
 const t0 = performance.now();
 for (let i = 0; i < 10000000; i++) {
@@ -155,6 +155,45 @@ console.log('Checking string type took ' + (t1 - t0) / n + ' milliseconds on ave
 _Javascript_
 
 ```javascript
+// Explanation works well with nesting too
+const nestedPoint = new Map({
+  x: new Map({
+    x: new Map({
+      x: 2,
+      y: 3,
+    }),
+  }),
+});
+define('2-nested point', keys('nested nested point', {
+  x: keys('nested point', {x: getSpec('point')}),
+}));
+explain(nestedPoint, '2-nested point');
+// key x->key x->key x->is a number?: hi failed specification.
+// key x->key x->key y->is a number?: undefined failed specification.
+
+// A good way to capture the same behavior is via the immutable from JS method.
+const nestedPoint2 = fromJS({
+  x: {
+    x: {
+      x: 2,
+      y: 3,
+    },
+  },
+});
+
+isValid(nestedPoint2, '2-nested point'); // false
+
+// This works with normal JS Maps as well.
+const nestedPoint3 = {
+  x: {
+    x: {
+      x: 2,
+      y: 3,
+    },
+  },
+};
+
+isValid(nestedPoint3, '2-nested point'); // true
 // Test 1: Simple JS Maps
 let start,
   end,
@@ -166,10 +205,15 @@ for (let i = 0; i < numTimes; i++) {
 }
 end = performance.now();
 console.log(
-  `Test 1: Time taken to perform ${numTimes} validity checks on the JS Map is ${end -
-    start}ms, averaging ${(end - start) / numTimes}ms.`
+  'Test 1: Time taken to perform ' +
+    numTimes +
+    ' validity checks on the JS Map is ' +
+    (end - start) +
+    'ms, averaging ' +
+    (end - start) / numTimes +
+    'ms.'
 );
-/* Test 1: Time taken to perform 10000000 validity checks on the JS Map is 3281.227928996086ms averaging 0.00032812279289960863ms. */
+/* Test 1: Time taken to perform 10000000 validity checks on the JS Map is 5441.707319021225ms, averaging 0.0005441707319021225ms. */
 
 // Test 2: fromJS (immutableJS) Map
 start = performance.now();
@@ -178,10 +222,15 @@ for (let i = 0; i < numTimes; i++) {
 }
 end = performance.now();
 console.log(
-  `Test 2: Time taken to perform ${numTimes} validity checks on the fromJS Map is ${end -
-    start}ms, averaging ${(end - start) / numTimes}ms.`
+  'Test 2: Time taken to perform ' +
+    numTimes +
+    ' validity checks on the fromJS Map is ' +
+    (end - start) +
+    'ms, averaging ' +
+    (end - start) / numTimes +
+    'ms.'
 );
-/* Test 2: Time taken to perform 10000000 validity checks on the fromJS Map is 372.3540229797363ms, averaging 0.00003723540229797363ms. */
+/* Test 2: Test 2: Time taken to perform 10000000 validity checks on the fromJS Map is 1474.4121170043945ms, averaging 0.00014744121170043946ms. */
 
 // Test 3: immutableJS Map
 start = performance.now();
@@ -190,11 +239,16 @@ for (let i = 0; i < numTimes; i++) {
 }
 end = performance.now();
 console.log(
-  `Test 3: Time taken to perform ${numTimes} validity checks on the fromJS Map is ${end -
-    start}ms, averaging ${(end - start) / numTimes}ms.`
+  'Test 3: Time taken to perform ' +
+    numTimes +
+    ' validity checks on the immutable Map is ' +
+    (end - start) +
+    'ms, averaging ' +
+    (end - start) / numTimes +
+    'ms.'
 );
 
-/* Test 3: Time taken to perform 10000000 validity checks on the fromJS Map is 375.91091895103455ms, averaging 0.00003759109189510345ms. */
+/* Test 3: Time taken to perform 10000000 validity checks on the immutable Map is 1248.7203179597855ms, averaging 0.00012487203179597855ms. */
 ```
 
 _Clojure_
@@ -218,7 +272,7 @@ _Clojure_
 As we may have expected, the immutable Maps take about the same times. We also note that
 the mutable version takes nearly three times as long as the immutable versions with this input.
 
-For comparison purposes, clojure's `spec/alpha` (which inspired this library) gives us 31613.900138 msecs, which is about 100 times our immutable version, and 10 times our mutable version implementation.
+For comparison purposes, clojure's `spec/alpha` (which inspired this library) gives us 31613.900138 msecs, which is about 300 times our immutable version, and 30 times our mutable version implementation.
 
 ## When should I use/ not use this library?
 

@@ -4,7 +4,7 @@
   "description": "`specjs` seeks to implement a specification system for Javascript.",
   "main": "index.js",
   "scripts": {
-    "docs": "jsdoc -c jsdoc.json",
+    "docs": "typedoc --theme ./node_modules/typedoc-neo-theme/bin/default src",
     "test": "mocha -c -r ts-node/register,@babel/register --reporter dot 'tests/**/*.test.js'",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
@@ -44,12 +44,13 @@
     "eslint": "^5.14.1",
     "eslint-plugin-mocha": "^6.2.1",
     "husky": "^3.0.9",
-    "jsdoc": "^3.6.3",
     "lint-staged": "^9.4.2",
     "mocha": "^6.2.2",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "ts-node": "^8.4.1",
+    "typedoc": "^0.15.0",
+    "typedoc-neo-theme": "^1.0.4",
     "typescript": "^3.7.2"
   },
   "dependencies": {
@@ -63,8 +64,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "./node_modules/.bin/eslint --ext .jsx,js,.ts --ignore-path .gitignore --fix",
+    "*.{ts}": [
+      "./node_modules/.bin/eslint --ext .ts --ignore-path .gitignore --fix",
       "pretty-quick --staged",
       "git add"
     ]
