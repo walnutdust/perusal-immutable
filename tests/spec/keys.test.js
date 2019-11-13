@@ -39,7 +39,7 @@ describe('keys', function() {
     });
 
     it('returns the value if value passes (JS Object)', function() {
-      const testMap = new MapImmutable({x: 12});
+      const testMap = {x: 12};
       expect(keys('name', {x: even}).assert(testMap)).to.eq(testMap);
     });
 
@@ -54,7 +54,7 @@ describe('keys', function() {
     });
 
     it('returns invalid if value fails (JS Object)', function() {
-      const testMap = new MapImmutable({x: 11});
+      const testMap = {x: 11};
       expect(keys('name', {x: even}).assert(testMap)).to.eq(invalid);
     });
 
