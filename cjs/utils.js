@@ -168,6 +168,10 @@ function explainIfInvalid(value, spec) {
  */
 
 function define(name, spec) {
+  (0, _tinyInvariant['default'])(
+    typeof name == 'string',
+    'Specs can only be defined with string names!'
+  );
   (0, _tinyInvariant['default'])(!defs[name], 'Specfication for '.concat(name, ' already exists!'));
   (0, _tinyInvariant['default'])(
     spec instanceof _spec['default'],

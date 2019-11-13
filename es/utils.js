@@ -109,6 +109,7 @@ export function explainIfInvalid(value, spec) {
  */
 
 export function define(name, spec) {
+  invariant(typeof name == 'string', 'Specs can only be defined with string names!');
   invariant(!defs[name], 'Specfication for '.concat(name, ' already exists!'));
   invariant(spec instanceof Spec, 'perusal-immutable.define called with invalid spec.');
   defs[name] = spec;
