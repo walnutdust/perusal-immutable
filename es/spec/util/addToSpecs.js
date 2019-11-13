@@ -1,5 +1,4 @@
 import {isImmutable} from 'immutable';
-
 /** @module perusal-immutable/spec/util/addToSpecs */
 
 /**
@@ -11,11 +10,13 @@ import {isImmutable} from 'immutable';
  * (typically the spec's name).
  * @param {true|invalid} value - Value representing if the object satisfied the keys.
  */
-export function addToSpecs(object: any, key: string, value: true | Symbol) {
+
+export function addToSpecs(object, key, value) {
   if (isImmutable(object) || object.isExtendable) {
     if (!object.specs) {
       object.specs = {};
     }
+
     object.specs[key] = value;
   }
 }

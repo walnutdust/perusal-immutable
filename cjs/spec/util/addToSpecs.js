@@ -1,4 +1,11 @@
-import {isImmutable} from 'immutable';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true,
+});
+exports.addToSpecs = addToSpecs;
+
+var _immutable = require('immutable');
 
 /** @module perusal-immutable/spec/util/addToSpecs */
 
@@ -11,11 +18,12 @@ import {isImmutable} from 'immutable';
  * (typically the spec's name).
  * @param {true|invalid} value - Value representing if the object satisfied the keys.
  */
-export function addToSpecs(object: any, key: string, value: true | Symbol) {
-  if (isImmutable(object) || object.isExtendable) {
+function addToSpecs(object, key, value) {
+  if ((0, _immutable.isImmutable)(object) || object.isExtendable) {
     if (!object.specs) {
       object.specs = {};
     }
+
     object.specs[key] = value;
   }
 }
