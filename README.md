@@ -282,7 +282,7 @@ For comparison purposes, clojure's `spec/alpha` (which inspired this library) gi
 **_Avoid when_**:
 
 1. The developer team is able to be fully certain that the data flow within the program is as intended - in this case, there is no need to install `perusal-immutable` to verify the data.
-2. The program requires high level of optimization and speed - `perusal-immutable` comes with performance costs since it has to check the type
+2. The program requires high level of optimization and speed - `perusal-immutable` comes with performance costs since it has to check the type of the data.
 
 In general, `perusal-immutable` is good for when we want to assert that the input data fulfills a certain structure before we perform further processing (e.g. sending it out to another API, data processing). With the immutable version, users do not have to worry about costs associated with repeated checking of data that is handled between functions, since the metadata will be stored if the same data is used.
 
@@ -294,7 +294,10 @@ Sure! Look at [js.spec](https://github.com/prayerslayer/js.spec) or [speculaas](
 
 1. User handling of error logging.
 1. Transferrable spec initialization.
-1. Assert number of arguments
+1. Regex?
+1. Lodash?
+1. Enum
+1. Nullable
 
 ## Contributors
 

@@ -11,6 +11,7 @@ var _exportNames = {
   keys: true,
   every: true,
   optional: true,
+  nullable: true,
   invalid: true,
   assert: true,
   isValid: true,
@@ -59,6 +60,12 @@ Object.defineProperty(exports, 'optional', {
   enumerable: true,
   get: function get() {
     return _optional.optional;
+  },
+});
+Object.defineProperty(exports, 'nullable', {
+  enumerable: true,
+  get: function get() {
+    return _nullable.nullable;
   },
 });
 Object.defineProperty(exports, 'invalid', {
@@ -117,6 +124,8 @@ var _keys = require('./spec/keys');
 var _every = require('./spec/every');
 
 var _optional = require('./spec/optional');
+
+var _nullable = require('./spec/nullable');
 
 var _control = require('./control');
 

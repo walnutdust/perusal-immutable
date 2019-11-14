@@ -3,7 +3,7 @@ import {optional, Spec, even, odd, invalid} from '../../cjs/index';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 import sinon from 'sinon';
 
-describe('optional key', function() {
+describe('optional', function() {
   beforeEach(suspendConsole);
   afterEach(restoreConsole);
 

@@ -5,6 +5,7 @@ import {pred} from './spec/pred';
 import {keys} from './spec/keys';
 import {every} from './spec/every';
 import {optional} from './spec/optional';
+import {nullable} from './spec/nullable';
 import {invalid} from './control';
 import {assert, isValid, explain, explainIfInvalid, define, getSpec} from './utils';
 export * from './preds';
@@ -18,6 +19,7 @@ export {
   or,
   invalid,
   assert,
+  nullable,
   isValid,
   explain,
   explainIfInvalid,
