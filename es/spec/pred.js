@@ -113,7 +113,7 @@ var Pred =
          * returns `perusal-immutable.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal-immutable.invalid otherwise.
          * @throws Throws an error if predicate function does not return boolean when
          * fed with input value.

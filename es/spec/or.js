@@ -112,7 +112,7 @@ var Or =
          * returns `perusal-immutable.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal-immutable.invalid otherwise.
          */
         value: function assert(value) {
@@ -238,7 +238,7 @@ var Or =
  * readable (meaningful) string, since this is what will get printed out in explain.
  * @param {...Spec} specs - Specs, where one of them has to be satisfied to fulfill
  * this spec.
- * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
+ * @return {Or} Returns an `Or` spec representing the disjunction of the given specs.
  */
 
 export function or(name) {

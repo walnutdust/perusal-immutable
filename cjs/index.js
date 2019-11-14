@@ -9,6 +9,7 @@ var _exportNames = {
   or: true,
   pred: true,
   keys: true,
+  oneOf: true,
   every: true,
   optional: true,
   nullable: true,
@@ -48,6 +49,12 @@ Object.defineProperty(exports, 'keys', {
   enumerable: true,
   get: function get() {
     return _keys.keys;
+  },
+});
+Object.defineProperty(exports, 'oneOf', {
+  enumerable: true,
+  get: function get() {
+    return _oneOf.oneOf;
   },
 });
 Object.defineProperty(exports, 'every', {
@@ -120,6 +127,8 @@ var _or = require('./spec/or');
 var _pred = require('./spec/pred');
 
 var _keys = require('./spec/keys');
+
+var _oneOf = require('./spec/oneOf');
 
 var _every = require('./spec/every');
 

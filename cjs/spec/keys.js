@@ -129,7 +129,7 @@ var Keys =
          * returns `perusal-immutable.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal-immutable.invalid otherwise.
          */
         value: function assert(value) {

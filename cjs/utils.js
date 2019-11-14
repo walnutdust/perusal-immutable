@@ -32,7 +32,7 @@ var defs = {};
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
- * @return {invalid|any} Returns the value if value passes specification, returns
+ * @return {any} Returns the value if value passes specification, returns
  * perusal-immutable.invalid otherwise.
  */
 
