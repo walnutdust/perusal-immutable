@@ -9,54 +9,8 @@ exports.explain = explain;
 exports.explainIfInvalid = explainIfInvalid;
 exports.define = define;
 exports.getSpec = getSpec;
-Object.defineProperty(exports, 'Spec', {
-  enumerable: true,
-  get: function get() {
-    return _spec['default'];
-  },
-});
-Object.defineProperty(exports, 'and', {
-  enumerable: true,
-  get: function get() {
-    return _and.and;
-  },
-});
-Object.defineProperty(exports, 'or', {
-  enumerable: true,
-  get: function get() {
-    return _or.or;
-  },
-});
-Object.defineProperty(exports, 'pred', {
-  enumerable: true,
-  get: function get() {
-    return _pred.pred;
-  },
-});
-Object.defineProperty(exports, 'keys', {
-  enumerable: true,
-  get: function get() {
-    return _keys.keys;
-  },
-});
-Object.defineProperty(exports, 'optional', {
-  enumerable: true,
-  get: function get() {
-    return _optional.optional;
-  },
-});
 
 var _spec = _interopRequireDefault(require('./spec/spec'));
-
-var _and = require('./spec/and');
-
-var _or = require('./spec/or');
-
-var _pred = require('./spec/pred');
-
-var _keys = require('./spec/keys');
-
-var _optional = require('./spec/optional');
 
 var _control = require('./control');
 

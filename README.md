@@ -295,6 +295,7 @@ Sure! Look at [js.spec](https://github.com/prayerslayer/js.spec) or [speculaas](
 1. `coll`, `every`
 1. User handling of error logging.
 1. Transferrable spec initialization.
+1. Assert number of arguments
 
 ## Contributors
 

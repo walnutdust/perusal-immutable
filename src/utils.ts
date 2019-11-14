@@ -1,14 +1,7 @@
 import Spec from './spec/spec';
-import {and} from './spec/and';
-import {or} from './spec/or';
-import {pred} from './spec/pred';
-import {keys} from './spec/keys';
-import {optional} from './spec/optional';
 import {invalid} from './control';
 import {isImmutable} from 'immutable';
 import invariant from 'tiny-invariant';
-
-export {and, keys, pred, optional, Spec, or};
 
 /* eslint-disable no-console */
 /** @member {[key: string]: Spec} defs holds all user-made definitions. */

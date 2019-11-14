@@ -3,6 +3,7 @@ import {and} from './spec/and';
 import {or} from './spec/or';
 import {pred} from './spec/pred';
 import {keys} from './spec/keys';
+import {every} from './spec/every';
 import {optional} from './spec/optional';
 import {invalid} from './control';
 import {assert, isValid, explain, explainIfInvalid, define, getSpec} from './utils';
@@ -11,6 +12,7 @@ export {
   and,
   keys,
   pred,
+  every,
   optional,
   Spec,
   or,

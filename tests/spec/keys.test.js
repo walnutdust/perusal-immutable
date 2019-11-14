@@ -1,7 +1,5 @@
 import {expect} from 'chai';
-import {keys, Spec} from '../../cjs/utils';
-import {even} from '../../cjs/preds';
-import {invalid} from '../../cjs/control';
+import {keys, Spec, even, invalid} from '../../cjs/index';
 import {Map as MapImmutable} from 'immutable';
 import {suspendConsole, restoreConsole} from '../testing-utils';
 
