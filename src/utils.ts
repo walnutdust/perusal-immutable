@@ -13,10 +13,10 @@ const defs: {[key: string]: Spec} = {};
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
- * @return {invalid|any} Returns the value if value passes specification, returns
+ * @return {any} Returns the value if value passes specification, returns
  * perusal-immutable.invalid otherwise.
  */
-export function assert(value: any, spec: Spec | string) {
+export function assert(value: any, spec: Spec | string): any {
   // getSpec allows us to pass it strings to retrive previously defined specs.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,
@@ -40,7 +40,7 @@ export function assert(value: any, spec: Spec | string) {
  * @return {boolean} Returns boolean representing if the value if value passes
  * spec.
  */
-export function isValid(value: any, spec: Spec | string) {
+export function isValid(value: any, spec: Spec | string): boolean {
   // Error checking/throwing here to provide more helpful error messages.
   invariant(
     typeof spec === 'string' || spec instanceof Spec,

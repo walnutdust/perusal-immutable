@@ -14,10 +14,10 @@ class Every extends Spec {
    * returns `perusal-immutable.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
-   * @return {invalid|any} Returns the value if value passes spec, returns
+   * @return {any} Returns the value if value passes spec, returns
    * perusal-immutable.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     invariant(value.values, 'perusal-immutable.every.assert was not called with a collection!');
 
     const iterator = value.values();
@@ -68,7 +68,7 @@ class Every extends Spec {
  * @return {Every} Returns an `Every` spec representing that all elements in the collection have to
  * satisfy the provided spec..
  */
-export function every(name: string, spec: Spec) {
+export function every(name: string, spec: Spec): Every {
   invariant(typeof name === 'string', 'perusal-immutable.every was called with an invalid name.');
   invariant(spec instanceof Spec, 'perusal-immutable.every was called with invalid specs.');
   invariant(

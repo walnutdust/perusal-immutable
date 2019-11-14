@@ -16,12 +16,12 @@ export default class Pred extends Spec {
    * returns `perusal-immutable.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
-   * @return {invalid|any} Returns the value if value passes spec, returns
+   * @return {any} Returns the value if value passes spec, returns
    * perusal-immutable.invalid otherwise.
    * @throws Throws an error if predicate function does not return boolean when
    * fed with input value.
    */
-  assert(value: any) {
+  assert(value: any): any {
     const result = this.options(value);
 
     if (result === true) return value;
@@ -40,7 +40,7 @@ export default class Pred extends Spec {
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value: any, path: string[]) {
+  explain(value: any, path: string[]): boolean {
     const result = this.options(value);
 
     if (result === true) return true;
@@ -71,7 +71,7 @@ export default class Pred extends Spec {
  * to `fn`.
  * @throws Throws an error if name is not a valid string or fn is not a valid function.
  */
-export function pred(name: string, fn: (value: any) => boolean) {
+export function pred(name: string, fn: (value: any) => boolean): Pred {
   invariant(
     fn && typeof fn === 'function',
     'perusal-immutable.pred was called with an invalid predicate.'

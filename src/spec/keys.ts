@@ -17,10 +17,10 @@ class Keys extends Spec {
    * returns `perusal-immutable.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
-   * @return {invalid|any} Returns the value if value passes spec, returns
+   * @return {any} Returns the value if value passes spec, returns
    * perusal-immutable.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     if (value.specs && value.specs[this.name] !== undefined) return value.specs[this.name];
     if (!(typeof value === 'object')) return invalid;
 
@@ -45,7 +45,7 @@ class Keys extends Spec {
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value: any, path: string[]) {
+  explain(value: any, path: string[]): boolean {
     if (!(value instanceof Map) && !(typeof value === 'object')) return false;
 
     let result = true;
@@ -70,7 +70,7 @@ class Keys extends Spec {
  * @return {Keys} Returns a `Keys` spec requiring the values of the input to satisfy
  * the keys initialized in this spec.
  */
-export function keys(name: string, specs: {[key: string]: Spec}) {
+export function keys(name: string, specs: {[key: string]: Spec}): Keys {
   invariant(typeof name === 'string', 'perusal-immutable.keys was called with an invalid name.');
   invariant(
     typeof specs === 'object' && Object.keys(specs).length !== 0,

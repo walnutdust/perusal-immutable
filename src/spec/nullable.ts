@@ -15,10 +15,10 @@ export default class Nullable extends Spec {
    * returns `perusal-immutable.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
-   * @return {invalid|any} Returns the value if value passes spec, returns
+   * @return {any} Returns the value if value passes spec, returns
    * perusal-immutable.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     if (value === null) return value;
 
     const result = this.options.assert(value);
@@ -35,7 +35,7 @@ export default class Nullable extends Spec {
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value: any, path: string[]) {
+  explain(value: any, path: string[]): boolean {
     if (value === null) return true;
 
     return this.options.explain(value, path);
@@ -46,10 +46,10 @@ export default class Nullable extends Spec {
  * Factory function for `Nullable` specs.
  *
  * @param {Spec} spec - Spec that has to be fulfiled if input value is not undefined.
- * @return {Optional} Returns a `Nullable` spec requiring the input value to satisfy
+ * @return {Nullable} Returns a `Nullable` spec requiring the input value to satisfy
  * the provided spec if it is not null.
  */
-export function nullable(spec: Spec) {
+export function nullable(spec: Spec): Nullable {
   invariant(spec instanceof Spec, 'Invalid specification passed to perusal-immutable.nullable');
   invariant(
     arguments.length === 1,

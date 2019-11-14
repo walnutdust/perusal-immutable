@@ -297,7 +297,6 @@ Sure! Look at [js.spec](https://github.com/prayerslayer/js.spec) or [speculaas](
 1. Regex?
 1. Lodash?
 1. Enum
-1. Nullable
 
 ## Contributors
 

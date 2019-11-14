@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Pred | perusal-immutable</title>
+    <title>Nullable | perusal-immutable</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -59,7 +59,7 @@
         <div class="container">
           <ul class="tsd-breadcrumb">
             <li>
-              <a href="pred.html">Pred</a>
+              <a href="nullable.html">Nullable</a>
             </li>
           </ul>
         </div>
@@ -77,14 +77,13 @@
           </nav>
         </div>
         <div class="col-7 offset-3 col-content">
-          <h1>Class Pred</h1>
+          <h1>Class Nullable</h1>
           <section class="tsd-panel tsd-comment">
             <div class="tsd-comment tsd-typography tsd-comment-shorttext">
               <div class="lead">
                 <p>
-                  Class representing <code>Predicates</code>, the building block of specs. It is
-                  important that your predicates are as simple as possible to aid in debugging,
-                  because simple predicates will meaningfully inform exactly what the issue is.
+                  Class representing <code>Nullable</code> specs, which either accepts an null value
+                  or requires that the value satisfy the spec if present.
                 </p>
               </div>
             </div>
@@ -96,7 +95,7 @@
                 <a href="spec.html" class="tsd-signature-type">Spec</a>
                 <ul class="tsd-hierarchy">
                   <li>
-                    <span class="target">Pred</span>
+                    <span class="target">Nullable</span>
                   </li>
                 </ul>
               </li>
@@ -109,7 +108,7 @@
                   <h3>Constructors</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-                      <a href="pred.html#constructor" class="tsd-kind-icon">constructor</a>
+                      <a href="nullable.html#constructor" class="tsd-kind-icon">constructor</a>
                     </li>
                   </ul>
                 </section>
@@ -117,10 +116,10 @@
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-                      <a href="pred.html#name" class="tsd-kind-icon">name</a>
+                      <a href="nullable.html#name" class="tsd-kind-icon">name</a>
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-                      <a href="pred.html#options" class="tsd-kind-icon">options</a>
+                      <a href="nullable.html#options" class="tsd-kind-icon">options</a>
                     </li>
                   </ul>
                 </section>
@@ -128,10 +127,10 @@
                   <h3>Methods</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-                      <a href="pred.html#assert" class="tsd-kind-icon">assert</a>
+                      <a href="nullable.html#assert" class="tsd-kind-icon">assert</a>
                     </li>
                     <li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-                      <a href="pred.html#explain" class="tsd-kind-icon">explain</a>
+                      <a href="nullable.html#explain" class="tsd-kind-icon">explain</a>
                     </li>
                   </ul>
                 </section>
@@ -149,7 +148,7 @@
                 class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"
               >
                 <li class="tsd-signature tsd-kind-icon">
-                  new <wbr />Pred<span class="tsd-signature-symbol">(</span>name<span
+                  new <wbr />Nullable<span class="tsd-signature-symbol">(</span>name<span
                     class="tsd-signature-symbol"
                     >: </span
                   ><span class="tsd-signature-type">string</span>, options<span
@@ -158,7 +157,7 @@
                   ><span class="tsd-signature-type">any</span
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
-                  ><a href="pred.html" class="tsd-signature-type">Pred</a>
+                  ><a href="nullable.html" class="tsd-signature-type">Nullable</a>
                 </li>
               </ul>
               <ul class="tsd-descriptions">
@@ -183,7 +182,7 @@
                     </li>
                   </ul>
                   <h4 class="tsd-returns-title">
-                    Returns <a href="pred.html" class="tsd-signature-type">Pred</a>
+                    Returns <a href="nullable.html" class="tsd-signature-type">Nullable</a>
                   </h4>
                 </li>
               </ul>
@@ -253,7 +252,7 @@
                       Overrides <a href="spec.html">Spec</a>.<a href="spec.html#assert">assert</a>
                     </p>
                     <ul>
-                      <li>Defined in spec/pred.ts:24</li>
+                      <li>Defined in spec/nullable.ts:21</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
@@ -263,26 +262,6 @@
                         returns <code>perusal-immutable.invalid</code> otherwise.
                       </p>
                     </div>
-                    <dl class="tsd-comment-tags">
-                      <dt>throws</dt>
-                      <dd>
-                        <p>
-                          Throws an error if predicate function does not return boolean when fed
-                          with input value.
-                        </p>
-                      </dd>
-                    </dl>
-                  </div>
-                  <div class="tsd-comment tsd-typography tsd-comment-tags">
-                    <dl class="tsd-comment-tags">
-                      <dt>throws</dt>
-                      <dd>
-                        <p>
-                          Throws an error if predicate function does not return boolean when fed
-                          with input value.
-                        </p>
-                      </dd>
-                    </dl>
                   </div>
                   <h4 class="tsd-parameters-title">Parameters</h4>
                   <ul class="tsd-parameters">
@@ -320,7 +299,7 @@
                   ><span class="tsd-signature-symbol">[]</span
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-type">boolean</span>
+                  ><span class="tsd-signature-type">any</span>
                 </li>
               </ul>
               <ul class="tsd-descriptions">
@@ -330,15 +309,12 @@
                       Overrides <a href="spec.html">Spec</a>.<a href="spec.html#explain">explain</a>
                     </p>
                     <ul>
-                      <li>Defined in spec/pred.ts:43</li>
+                      <li>Defined in spec/nullable.ts:38</li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography tsd-comment-shorttext">
                     <div class="lead">
-                      <p>
-                        Explains why a value passes/fails this spec. Prints out the path to this
-                        pred if value fails at this pred.
-                      </p>
+                      <p>Explains why a value passes/fails this spec.</p>
                     </div>
                   </div>
                   <h4 class="tsd-parameters-title">Parameters</h4>
@@ -360,7 +336,7 @@
                     </li>
                   </ul>
                   <h4 class="tsd-returns-title">
-                    Returns <span class="tsd-signature-type">boolean</span>
+                    Returns <span class="tsd-signature-type">any</span>
                   </h4>
                   <p>Returns true if the value satisfies this spec, false otherwise.</p>
                 </li>
@@ -381,39 +357,39 @@
               <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
                 <a href="keys.html" class="tsd-kind-icon">Keys</a>
               </li>
-              <li class=" tsd-kind-class tsd-is-private root">
+            </ul>
+            <ul class="current">
+              <li class="current tsd-kind-class tsd-is-private root">
                 <a href="nullable.html" class="tsd-kind-icon">Nullable</a>
+                <ul>
+                  <li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+                    <a href="nullable.html#constructor" class="tsd-kind-icon">constructor</a>
+                  </li>
+                  <li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+                    <a href="nullable.html#name" class="tsd-kind-icon">name</a>
+                  </li>
+                  <li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+                    <a href="nullable.html#options" class="tsd-kind-icon">options</a>
+                  </li>
+                  <li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+                    <a href="nullable.html#assert" class="tsd-kind-icon">assert</a>
+                  </li>
+                  <li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+                    <a href="nullable.html#explain" class="tsd-kind-icon">explain</a>
+                  </li>
+                </ul>
               </li>
+            </ul>
+            <ul class="after-current">
               <li class=" tsd-kind-class tsd-is-private root">
                 <a href="optional.html" class="tsd-kind-icon">Optional</a>
               </li>
               <li class=" tsd-kind-class tsd-is-private tsd-is-not-exported root">
                 <a href="or.html" class="tsd-kind-icon">Or</a>
               </li>
-            </ul>
-            <ul class="current">
-              <li class="current tsd-kind-class tsd-is-private root">
+              <li class=" tsd-kind-class tsd-is-private root">
                 <a href="pred.html" class="tsd-kind-icon">Pred</a>
-                <ul>
-                  <li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-                    <a href="pred.html#constructor" class="tsd-kind-icon">constructor</a>
-                  </li>
-                  <li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-                    <a href="pred.html#name" class="tsd-kind-icon">name</a>
-                  </li>
-                  <li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-                    <a href="pred.html#options" class="tsd-kind-icon">options</a>
-                  </li>
-                  <li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-                    <a href="pred.html#assert" class="tsd-kind-icon">assert</a>
-                  </li>
-                  <li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-                    <a href="pred.html#explain" class="tsd-kind-icon">explain</a>
-                  </li>
-                </ul>
               </li>
-            </ul>
-            <ul class="after-current">
               <li class=" tsd-kind-class tsd-is-private root">
                 <a href="spec.html" class="tsd-kind-icon">Spec</a>
               </li>

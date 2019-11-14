@@ -15,10 +15,10 @@ class Or extends Spec {
    * returns `perusal-immutable.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
-   * @return {invalid|any} Returns the value if value passes spec, returns
+   * @return {any} Returns the value if value passes spec, returns
    * perusal-immutable.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     for (let spec of this.options) {
       if (spec.assert(value) !== invalid) {
         return value;
@@ -36,7 +36,7 @@ class Or extends Spec {
    * @return {boolean} Returns true if the value satisfies this spec, false
    * otherwise.
    */
-  explain(value: any, path: string[]) {
+  explain(value: any, path: string[]): boolean {
     let result = false;
     for (let spec of this.options) {
       if (spec.assert(value) !== invalid) {
@@ -61,9 +61,9 @@ class Or extends Spec {
  * readable (meaningful) string, since this is what will get printed out in explain.
  * @param {...Spec} specs - Specs, where one of them has to be satisfied to fulfill
  * this spec.
- * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
+ * @return {Or} Returns an `Or` spec representing the disjunction of the given specs.
  */
-export function or(name: string, ...specs: Spec[]) {
+export function or(name: string, ...specs: Spec[]): Or {
   invariant(typeof name === 'string', 'perusal-immutable.or was called with an invalid name.');
   invariant(specs.length > 0, 'perusal-immutable.or was called without specs.');
   for (let spec of specs) {
