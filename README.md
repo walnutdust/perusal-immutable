@@ -319,6 +319,7 @@ Sure! Look at [js.spec](https://github.com/prayerslayer/js.spec) or [speculaas](
 ## Roadmap
 
 1. Removing before production?
+1. Generator functions, possibly in a new library?
 
 ## Contributors
 
