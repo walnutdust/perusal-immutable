@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.keys = void 0;
+exports.keys = keys;
 
 var _spec = _interopRequireDefault(require('./spec'));
 
@@ -129,7 +129,7 @@ var Keys =
          * returns `perusal-immutable.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal-immutable.invalid otherwise.
          */
         value: function assert(value) {
@@ -168,10 +168,9 @@ var Keys =
           for (var _key2 in this.options) {
             var spec = this.options[_key2];
 
-            if (
-              !value.get ||
-              spec.explain(value.get(_key2), path.concat(['key '.concat(_key2)])) === false
-            ) {
+            var toCheck = (value.get && value.get(_key2)) || value[_key2];
+
+            if (spec.explain(toCheck, path.concat(['key '.concat(_key2)])) === false) {
               result = false;
             }
           }
@@ -193,7 +192,7 @@ var Keys =
  * the keys initialized in this spec.
  */
 
-var keys = function keys(name, specs) {
+function keys(name, specs) {
   (0, _tinyInvariant['default'])(
     typeof name === 'string',
     'perusal-immutable.keys was called with an invalid name.'
@@ -210,7 +209,9 @@ var keys = function keys(name, specs) {
     );
   }
 
+  (0, _tinyInvariant['default'])(
+    arguments.length === 2,
+    'perusal-immutable.keys was called with invalid number of arguments.'
+  );
   return new Keys(name, specs);
-};
-
-exports.keys = keys;
+}

@@ -1,13 +1,7 @@
 import Spec from './spec/spec';
-import {and} from './spec/and';
-import {or} from './spec/or';
-import {pred} from './spec/pred';
-import {keys} from './spec/keys';
-import {optional} from './spec/optional';
 import {invalid} from './control';
 import {isImmutable} from 'immutable';
 import invariant from 'tiny-invariant';
-export {and, keys, pred, optional, Spec, or};
 /* eslint-disable no-console */
 
 /** @member {[key: string]: Spec} defs holds all user-made definitions. */
@@ -19,7 +13,7 @@ var defs = {};
  *
  * @param {any} value - The value to be asserted.
  * @param {Spec | string} spec - The spec to be used.
- * @return {invalid|any} Returns the value if value passes specification, returns
+ * @return {any} Returns the value if value passes specification, returns
  * perusal-immutable.invalid otherwise.
  */
 
@@ -109,6 +103,7 @@ export function explainIfInvalid(value, spec) {
  */
 
 export function define(name, spec) {
+  invariant(typeof name == 'string', 'Specs can only be defined with string names!');
   invariant(!defs[name], 'Specfication for '.concat(name, ' already exists!'));
   invariant(spec instanceof Spec, 'perusal-immutable.define called with invalid spec.');
   defs[name] = spec;

@@ -9,7 +9,10 @@ var _exportNames = {
   or: true,
   pred: true,
   keys: true,
+  oneOf: true,
+  every: true,
   optional: true,
+  nullable: true,
   invalid: true,
   assert: true,
   isValid: true,
@@ -48,10 +51,28 @@ Object.defineProperty(exports, 'keys', {
     return _keys.keys;
   },
 });
+Object.defineProperty(exports, 'oneOf', {
+  enumerable: true,
+  get: function get() {
+    return _oneOf.oneOf;
+  },
+});
+Object.defineProperty(exports, 'every', {
+  enumerable: true,
+  get: function get() {
+    return _every.every;
+  },
+});
 Object.defineProperty(exports, 'optional', {
   enumerable: true,
   get: function get() {
     return _optional.optional;
+  },
+});
+Object.defineProperty(exports, 'nullable', {
+  enumerable: true,
+  get: function get() {
+    return _nullable.nullable;
   },
 });
 Object.defineProperty(exports, 'invalid', {
@@ -107,7 +128,13 @@ var _pred = require('./spec/pred');
 
 var _keys = require('./spec/keys');
 
+var _oneOf = require('./spec/oneOf');
+
+var _every = require('./spec/every');
+
 var _optional = require('./spec/optional');
+
+var _nullable = require('./spec/nullable');
 
 var _control = require('./control');
 

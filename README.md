@@ -8,6 +8,21 @@ A specification system (spec) ensures that data that is passed in conforms to th
 
 Inspired by Clojure's [spec/alpha](https://clojure.org/guides/spec).
 
+## Table of Contents
+
+- [Examples](#examples)
+- [Installation](#installation)
+- [Documentation](#documentation)
+  - [Link here](https://walnutdust.github.io/perusal-immutable)
+- [Working principles](#working-principle-of-perusal-immutable)
+- [Design principles](#design-principles-of-perusal-immutable)
+- [FAQ](#faq)
+- [Recommended Usage](#recommended-usage)
+- [Alternatives](#alternatives)
+- [Roadmap](#roadmap)
+- [Contributors](#contributors)
+- [License](#license)
+
 ## Examples
 
 ```javascript
@@ -59,7 +74,17 @@ More examples can be found in `example.js`.
 
 ## Installation
 
-This repository is currently not published as a library. Feel free to clone the repository and import as normal to test it out!
+**Node**
+
+```
+> npm install perusal-immutable
+```
+
+**Yarn**
+
+```
+> yarn add persual-immutable
+```
 
 ## Documentation
 
@@ -97,7 +122,8 @@ Static typing is used by programmers to help them reason about the program. Spec
 
 Specs, on the other hand, performs run-time verification on the data, which offers:
 
-1. **Greater flexibility/expressiveness of checking** - instead of sticking to given types and having to play with them, we can check that the data adheres to certain guidelines (e.g. is a prime, is either a function or a string, or has valid argument patterns (A, B, and C or B, D, and E). Arguably, when the data is more complicated, it becomes less intuitive to forcefully fit data into certain types, and types might not capture all the guarantees of the data structure anyways.
+1. **Greater flexibility/expressiveness of checking** - instead of sticking to given types and having to play with them, we can check that the data adheres to certain guidelines (e.g. is a prime, is either a functio
+1. Transferrable spec initialization examples in README.n or a string, or has valid argument patterns (A, B, and C or B, D, and E). Arguably, when the data is more complicated, it becomes less intuitive to forcefully fit data into certain types, and types might not capture all the guarantees of the data structure anyways.
 1. **Optional checking** - While enforced checking would stamp out bugs arising from invalid method calls, such a move severely limits the flexibility of expression in the language. Particularly, since Javascript itself is a dynamic language with no provisons for code optimization based on typing, a conventional type offering in this library does not do too much for the language (although tools like [Flow](https://flow.org/) and [Typescript](https://www.typescriptlang.org/) can be used!) We should work with the language features that are offered, rather than running counter to it - embracing Javascript's dynamism.
 
 Refer to Clojure's [spec guide](https://clojure.org/about/spec) to see how people smarter than me reason about this.
@@ -272,29 +298,28 @@ the mutable version takes nearly three times as long as the immutable versions w
 
 For comparison purposes, clojure's `spec/alpha` (which inspired this library) gives us 31613.900138 msecs, which is about 300 times our immutable version, and 30 times our mutable version implementation.
 
-## When should I use/ not use this library?
+## Recommended Usage
 
 **_Suggested Usages_**:
 
 1. Data-processing heavy programs - Ensure that the data fits a required specification before beginning to process it, and be reassured that if the specification fully expresses the requirements of the program, the remainder of the program will be able to process the data without difficulties.
-1. API-facing functions/ APIs - Consider an API that searches a person either with their first name and last name or with their address. APIs normally would have them at the same endpoint, but it would be misleading to suggest that all three arguments are optional - supplying only the last name would not work. With `perusal-immutable`, the APIs are able to specify the possible combinations of information it wishes to accept.
+1. API-facing functions/ APIs - Consider an API that searches a person either with their first name and last name or with their address. APIs normally would have them at the same endpoint, but it would be misleading to suggest that all three arguments are optional - supplying only the last name would not work. With `perusal-immutable`, the APIs are able to specify the possible combinations of information it wishes to accept. **Perusal-immutable can also be used to send your API specifications to your client,** in the form of JavaScript files, so that your client can load the specifications and use them to check that the endpoints are forming valid API calls.
 
 **_Avoid when_**:
 
 1. The developer team is able to be fully certain that the data flow within the program is as intended - in this case, there is no need to install `perusal-immutable` to verify the data.
-2. The program requires high level of optimization and speed - `perusal-immutable` comes with performance costs since it has to check the type
+2. The program requires high level of optimization and speed - `perusal-immutable` comes with performance costs since it has to check the type of the data.
 
 In general, `perusal-immutable` is good for when we want to assert that the input data fulfills a certain structure before we perform further processing (e.g. sending it out to another API, data processing). With the immutable version, users do not have to worry about costs associated with repeated checking of data that is handled between functions, since the metadata will be stored if the same data is used.
 
-## Are there alternatives?
+## Alternatives
 
 Sure! Look at [js.spec](https://github.com/prayerslayer/js.spec) or [speculaas](https://github.com/mrijk/speculaas).
 
 ## Roadmap
 
-1. `coll`, `every`
-1. User handling of error logging.
-1. Transferrable spec initialization.
+1. Removing before production?
+1. Generator functions, possibly in a new library?
 
 ## Contributors
 

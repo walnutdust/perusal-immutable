@@ -151,7 +151,11 @@ var Optional =
  */
 
 export {Optional as default};
-export var optional = function optional(spec) {
+export function optional(spec) {
   invariant(spec instanceof Spec, 'Invalid specification passed to perusal-immutable.optional');
+  invariant(
+    arguments.length === 1,
+    'perusal-immutable.optional was called with invalid number of arguments.'
+  );
   return new Optional('optional', spec);
-};
+}

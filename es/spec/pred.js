@@ -113,7 +113,7 @@ var Pred =
          * returns `perusal-immutable.invalid` otherwise.
          *
          * @param {any} value - The value to be asserted.
-         * @return {invalid|any} Returns the value if value passes spec, returns
+         * @return {any} Returns the value if value passes spec, returns
          * perusal-immutable.invalid otherwise.
          * @throws Throws an error if predicate function does not return boolean when
          * fed with input value.
@@ -172,7 +172,7 @@ var Pred =
  */
 
 export {Pred as default};
-export var pred = function pred(name, fn) {
+export function pred(name, fn) {
   invariant(
     fn && typeof fn === 'function',
     'perusal-immutable.pred was called with an invalid predicate.'
@@ -181,5 +181,9 @@ export var pred = function pred(name, fn) {
     name && typeof name === 'string',
     'perusal-immutable.pred was called with an invalid string.'
   );
+  invariant(
+    arguments.length === 2,
+    'perusal-immutable.pred was called with invalid number of arguments.'
+  );
   return new Pred(name, fn);
-};
+}

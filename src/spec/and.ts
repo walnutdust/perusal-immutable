@@ -14,10 +14,10 @@ class And extends Spec {
    * returns `perusal-immutable.invalid` otherwise.
    *
    * @param {any} value - The value to be asserted.
-   * @return {invalid|any} Returns the value if value passes spec, returns
+   * @return {any} Returns the value if value passes spec, returns
    * perusal-immutable.invalid otherwise.
    */
-  assert(value: any) {
+  assert(value: any): any {
     for (let spec of this.options) {
       if (spec.assert(value) === invalid) {
         return invalid;
@@ -55,7 +55,7 @@ class And extends Spec {
  * @param {...Spec} specs - Specs that have all to be satisfied to fulfill this spec.
  * @return {And} Returns an `And` spec representing the conjunction of the given specs.
  */
-export function and(name: string, ...specs: Spec[]) {
+export function and(name: string, ...specs: Spec[]): And {
   invariant(typeof name === 'string', 'perusal-immutable.and was called with an invalid name.');
   invariant(specs.length > 0, 'perusal-immutable.and was called without specs.');
   for (let spec of specs) {
