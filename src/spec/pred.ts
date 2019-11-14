@@ -71,7 +71,7 @@ export default class Pred extends Spec {
  * to `fn`.
  * @throws Throws an error if name is not a valid string or fn is not a valid function.
  */
-export const pred = (name: string, fn: (value: any) => boolean) => {
+export function pred(name: string, fn: (value: any) => boolean) {
   invariant(
     fn && typeof fn === 'function',
     'perusal-immutable.pred was called with an invalid predicate.'
@@ -82,5 +82,10 @@ export const pred = (name: string, fn: (value: any) => boolean) => {
     'perusal-immutable.pred was called with an invalid string.'
   );
 
+  invariant(
+    arguments.length === 2,
+    'perusal-immutable.pred was called with invalid number of arguments.'
+  );
+
   return new Pred(name, fn);
-};
+}

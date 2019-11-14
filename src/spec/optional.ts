@@ -50,7 +50,11 @@ export default class Optional extends Spec {
  * @return {Optional} Returns a `Optional` spec requiring the input value to satisfy
  * the provided spec if it is defined.
  */
-export const optional = (spec: Spec) => {
+export function optional(spec: Spec) {
   invariant(spec instanceof Spec, 'Invalid specification passed to perusal-immutable.optional');
+  invariant(
+    arguments.length === 1,
+    'perusal-immutable.optional was called with invalid number of arguments.'
+  );
   return new Optional('optional', spec);
-};
+}

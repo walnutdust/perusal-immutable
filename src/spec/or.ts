@@ -63,11 +63,11 @@ class Or extends Spec {
  * this spec.
  * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
  */
-export const or = (name: string, ...specs: Spec[]) => {
+export function or(name: string, ...specs: Spec[]) {
   invariant(typeof name === 'string', 'perusal-immutable.or was called with an invalid name.');
   invariant(specs.length > 0, 'perusal-immutable.or was called without specs.');
   for (let spec of specs) {
     invariant(spec instanceof Spec, 'perusal-immutable.or was called with invalid specs.');
   }
   return new Or(name, specs);
-};
+}

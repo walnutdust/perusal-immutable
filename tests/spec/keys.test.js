@@ -23,6 +23,10 @@ describe('keys', function() {
     it('creates a keys spec successfully', function() {
       expect(keys('name', {x: even})).to.be.an.instanceof(Spec);
     });
+
+    it('throws an error on too many arguments', function() {
+      expect(() => keys('name', {x: even}, {x: even})).to.throw(Error);
+    });
   });
 
   describe('assert', function() {

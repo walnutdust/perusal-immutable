@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.or = void 0;
+exports.or = or;
 
 var _spec2 = _interopRequireDefault(require('./spec'));
 
@@ -254,7 +254,7 @@ var Or =
  * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
  */
 
-var or = function or(name) {
+function or(name) {
   (0, _tinyInvariant['default'])(
     typeof name === 'string',
     'perusal-immutable.or was called with an invalid name.'
@@ -282,6 +282,4 @@ var or = function or(name) {
   }
 
   return new Or(name, specs);
-};
-
-exports.or = or;
+}

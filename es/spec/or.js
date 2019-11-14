@@ -241,7 +241,7 @@ var Or =
  * @return {And} Returns an `Or` spec representing the disjunction of the given specs.
  */
 
-export var or = function or(name) {
+export function or(name) {
   invariant(typeof name === 'string', 'perusal-immutable.or was called with an invalid name.');
 
   for (
@@ -260,4 +260,4 @@ export var or = function or(name) {
   }
 
   return new Or(name, specs);
-};
+}

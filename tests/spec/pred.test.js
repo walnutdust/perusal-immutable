@@ -16,8 +16,18 @@ describe('pred', function() {
       expect(pred('is even?', (value) => value === true)).to.be.an.instanceof(Spec);
     });
 
-    it('passes with invalid name string', function() {
+    it('fails with invalid name string', function() {
       expect(() => pred(2, (value) => value === true)).to.throw(Error);
+    });
+
+    it('fails with too many arguments', function() {
+      expect(() =>
+        pred(
+          'is even?',
+          (value) => value,
+          (value) => value
+        )
+      ).to.throw(Error);
     });
   });
 

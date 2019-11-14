@@ -70,7 +70,7 @@ class Keys extends Spec {
  * @return {Keys} Returns a `Keys` spec requiring the values of the input to satisfy
  * the keys initialized in this spec.
  */
-export const keys = (name: string, specs: {[key: string]: Spec}) => {
+export function keys(name: string, specs: {[key: string]: Spec}) {
   invariant(typeof name === 'string', 'perusal-immutable.keys was called with an invalid name.');
   invariant(
     typeof specs === 'object' && Object.keys(specs).length !== 0,
@@ -84,5 +84,10 @@ export const keys = (name: string, specs: {[key: string]: Spec}) => {
     );
   }
 
+  invariant(
+    arguments.length === 2,
+    'perusal-immutable.keys was called with invalid number of arguments.'
+  );
+
   return new Keys(name, specs);
-};
+}

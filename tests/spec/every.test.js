@@ -19,6 +19,10 @@ describe('every', function() {
     it('passes with one Spec input', function() {
       expect(every('is every value even?', even)).to.be.an.instanceof(Spec);
     });
+
+    it('fails with too many Spec inputs', function() {
+      expect(() => every('is every value even?', even, even)).to.throw(Error);
+    });
   });
 
   describe('assert', function() {

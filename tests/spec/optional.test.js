@@ -19,6 +19,10 @@ describe('optional key', function() {
     it('passes with one Spec input', function() {
       expect(optional(even)).to.be.an.instanceof(Spec);
     });
+
+    it('fails with too many arguments', function() {
+      expect(() => optional(even, even)).to.throw(Error);
+    });
   });
 
   describe('assert', function() {

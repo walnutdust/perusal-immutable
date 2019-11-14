@@ -71,6 +71,9 @@ class Every extends Spec {
 export function every(name: string, spec: Spec) {
   invariant(typeof name === 'string', 'perusal-immutable.every was called with an invalid name.');
   invariant(spec instanceof Spec, 'perusal-immutable.every was called with invalid specs.');
-
+  invariant(
+    arguments.length === 2,
+    'perusal-immutable.every was called with invalid number of arguments.'
+  );
   return new Every(name, spec);
 }
